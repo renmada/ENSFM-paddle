@@ -1,0 +1,45 @@
+# Copyright (c) 2020 PaddlePaddle Authors. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#workspace: "models/recall/word2vec"
+runner:
+  train_data_dir: "../../../datasets/one_billion/data/train_all"
+  train_reader_path: "word2vec_reader" # importlib format
+  use_gpu: True
+  train_batch_size: 100
+  epochs: 5
+  print_interval: 100
+  #model_init_path: "output_model/0" # init model
+  model_save_path: "output_model_word2vec_all"
+  test_data_dir: "../../../datasets/one_billion/data/all_test"
+  infer_batch_size: 1024
+  infer_reader_path: "word2vec_infer_reader" # importlib format
+  infer_load_path: "output_model_word2vec_all"
+  infer_start_epoch: 0
+  infer_end_epoch: 5
+  # dataset
+  word_count_dict_path: "../../../tools/datasets/one_billion/data/all_dict/word_count_dict.txt"
+  word_id_dict_path: "../../../tools/datasets/one_billion/data/all_dict/word_id_dict.txt"
+
+hyper_parameters:
+  optimizer:
+    learning_rate: 1.0
+    decay_steps: 100000
+    decay_rate: 0.999
+    class: sgd
+    strategy: async
+  sparse_feature_number: 354051
+  sparse_feature_dim: 300
+  with_shuffle_batch: False
+  neg_num: 5
+  window_size: 5

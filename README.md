@@ -25,3 +25,9 @@ python ENSFM.py
 ### 日志
 - [复现日志](./data/ml-1m/ENSFM.txt)
 - [官方代码日志](./ENSFM-tf/data/ml-1m/ENSFM.txt)
+## 7. TIPC测试
+```
+cd PaddleRec
+bash test_tipc/prepare.sh ./test_tipc/configs/ensfm/train_infer_python.txt 'lite_train_lite_infer'
+bash test_tipc/test_train_inference_python.sh ./test_tipc/configs/ensfm/train_infer_python.txt 'lite_train_lite_infer'
+```
