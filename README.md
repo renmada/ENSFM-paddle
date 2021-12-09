@@ -1,6 +1,6 @@
 # 模型名称 Efficient Non-Sampling Factorization Machines for Optimal Context-Aware Recommendation
 ## 1. 简介
-ENSFM 是一个只有一层预测层的浅 FM 模型，跟 DeepFM, CFM 相比在复杂度和参数量上都更少，却在模型效果上表现显著的优势。结果验证了论文的观点：负采样策略并不足以使模型收敛到最优。与之相比，非采样学习对于优化 Top-N 推荐任务是非常有效的
+本论文提出从全部数据中学习 FM 来进行 Top-N 推荐，并设计了一个高效的非采样分解机框架（Efficient Non-Sampling Factorization Machines, ENSFM）。通过严格的数学推导，ENSFM 不仅在两类常用的推荐方法——分解机（FM）和矩阵分解（MF）之间建造了一个桥梁，并且可以高效的从整体数据中学习 FM 参数。 
 ## 2. 复现精度
 **复现精度比论文差一点，但是稍优于论文官方代码结果**
 
