@@ -3,29 +3,27 @@
 ENSFM 是一个只有一层预测层的浅 FM 模型，跟 DeepFM, CFM 相比在复杂度和参数量上都更少，却在模型效果上表现显著的优势。结果验证了论文的观点：负采样策略并不足以使模型收敛到最优。与之相比，非采样学习对于优化 Top-N 推荐任务是非常有效的
 ## 2. 复现精度
 **复现精度比论文差一点，但是稍优于论文官方代码结果**
-- 论文精度 (HR@5：0.0601，HR@10：0.1024，HR@20：0.1690)
-- 复现 (HR@5：0.0599，HR@10：0.1002，HR@20：0.1689) 
-- 官方代码 (HR@5：0.0594，HR@10：0.1012，HR@20：0.1687)  
-## 3. 数据集
-Movielens
-## 4. 环境依赖
+
+| Movielens   |HR@5|   HR@10   |HR@20@5|
+| ---- | ----  |  ---- | ----  | 
+| 论文  | 0.0601 |0.1024|0.1690|
+| 复现  | 0.0599 |0.1002|0.1689|
+| 官方代码  | 0.0594 |0.1012|0.1687|
+
+## 3. 环境依赖
 paddlepaddle-gpu=2.2.0
-## 6. 训练评估
+## 4. 训练评估
 ### 复现代码
 ```
 unzip data/ml-1m/train.csv.zip -d data/ml-1m/ 
 python ENSFM.py
 ```
 ### 官方代码
-```
-unzip ENSFM-tf/data/ml-1m/train.csv.zip -d ENSFM-tf/data/ml-1m/
-cd ENSFM-tf/code/
-python ENSFM.py
-```
+[链接](https://github.com/chenchongthu/ENSFM)
 ### 日志
 - [复现日志](./data/ml-1m/ENSFM.txt)
-- [官方代码日志](./ENSFM-tf/data/ml-1m/ENSFM.txt)
-## 7. TIPC测试
+- [官方代码日志](./data/ml-1m/ENSFM-tf.txt)
+## 5. TIPC测试
 ```
 cd PaddleRec
 bash test_tipc/prepare.sh ./test_tipc/configs/ensfm/train_infer_python.txt 'lite_train_lite_infer'
